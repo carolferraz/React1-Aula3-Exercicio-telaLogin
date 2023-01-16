@@ -11,8 +11,8 @@ function Login() {
         <Title title="Login" />
         <Input label="Usuário" />
         <Input label="Senha" hide />
-        <Button button="login" />
-        <Anchor anchor="Esqueceu a senha?" />
+        <Button href="" button="login" />
+        <Anchor href="http://google.com" anchor="Esqueceu a senha?" />
       </div>
     </div>
   );
