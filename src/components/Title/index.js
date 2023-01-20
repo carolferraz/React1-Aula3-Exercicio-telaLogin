@@ -1,9 +1,17 @@
 import "./styles.css";
+import PropTypes from "prop-types";
 
-function Title(props) {
+const Title = ( {title, alignSelf, borderBottom} ) => {
+
     return (
-        <h1 className="title"> {props.title}</h1>
+        <h1 className="title" style={ {alignSelf, borderBottom} }> {title}</h1>
     );
-}
+};
+
+Title.propTypes = {
+    title: PropTypes.string.isRequired,
+    alignSelf: PropTypes.string,
+};
+
 
 export default Title
