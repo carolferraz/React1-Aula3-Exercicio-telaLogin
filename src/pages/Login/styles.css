@@ -1,4 +1,4 @@
-.box-login-container{
+.container{
     display: flex;
     justify-content: center;
     width: 100%;
@@ -16,4 +16,10 @@
     padding: 40px;
     border-radius: 2px;
 
+}
+
+.align-btn{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
 }
