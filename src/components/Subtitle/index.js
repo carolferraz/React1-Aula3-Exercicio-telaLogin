@@ -7,12 +7,12 @@ const Subtitle = ( {subtitle, borderBottom} ) => {
     }
 
     return (
-        <h2 className="subtitle" style={ {borderBottom} }> {subtitle}</h2>
+        <h2 className="subtitle" style={ {borderBottom} } text={subtitle}> {subtitle}</h2>
     );
 };
 
 Subtitle.propTypes = {
-    subtitle: PropTypes.string.isRequired,
+    subtitle: PropTypes.string,
 };
 
 export default Subtitle

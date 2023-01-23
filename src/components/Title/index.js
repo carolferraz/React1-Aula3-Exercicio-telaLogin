@@ -4,12 +4,12 @@ import PropTypes from "prop-types";
 const Title = ( {title, alignSelf, borderBottom} ) => {
 
     return (
-        <h1 className="title" style={ {alignSelf, borderBottom} }> {title}</h1>
+        <h1 className="title" style={ {alignSelf, borderBottom} } text={title}> {title}</h1>
     );
 };
 
 Title.propTypes = {
-    title: PropTypes.string.isRequired,
+    title: PropTypes.string,
     alignSelf: PropTypes.string,
 };
 
