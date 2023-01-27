@@ -1,10 +1,10 @@
 import "./styles.css";
 import PropTypes from "prop-types";
-const Input = ( {label, hide, borderBottom, changeInput} ) => {
+const Input = ( {label, hide, color, borderBottom, onChange} ) => {
   return (
     <div className="input-login">
       <label for="input-"> {label}</label>
-      <input name="input" style={ {borderBottom} } type={hide ? "password" : "text"} onChange={changeInput}></input>
+      <input name="input" style={ {color, borderBottom} } type={hide ? "password" : "text"} onChange={onChange}></input>
     </div>
   );
 }
@@ -15,7 +15,8 @@ Input.propTypes = {
 }
 
 Input.defaultProps = {
-  borderBottom: "1px solid rgba(255, 255, 255, 0.8)",
+  color: "ffffffcc",
+  borderBottom: "1px solid ffffffcc",
 }
 
 export default Input;
