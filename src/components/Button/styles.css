@@ -1,10 +1,10 @@
-.button-login{
+.button{
    font-size: 16px;
-   border: none;
    padding: 15px 0;
+   border-radius: 8px;
 }
 
-.button-login:hover{
-    background: #3893a177;
+.button:hover{
     cursor: pointer;
+    scale: 105%;
 }

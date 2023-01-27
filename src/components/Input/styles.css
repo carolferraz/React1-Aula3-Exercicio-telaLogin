@@ -7,11 +7,13 @@
 label{
     color: #ffffffcc;
     font-size: 14px;
+    font-family: sans-serif;
 }
 
 input{
-    background: #353B50;
+    background: #292a2d;
     border: none;
+    border-radius: 8px;;
     border-bottom: 1px solid #ffffffcc;
     width: 100%;
     height: 30px;

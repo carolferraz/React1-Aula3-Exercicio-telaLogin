@@ -2,7 +2,7 @@ import "./styles.css";
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-  const Button = ( {addAction, button, background, color, width, alignSelf} ) => {
+  const Button = ( {addAction, button, background, color, border, width, alignSelf} ) => {
     const [ isHover, setIsHover] = useState(false);
 
     const hoverMouseEnter = () => {
@@ -16,9 +16,9 @@ import { useState } from "react";
   return (
     <>
       <button
-        className="button-login"
+        className="button"
         type="button"
-        style={ { background: isHover ? "#6b2134" :  background , color, width, alignSelf } }
+        style={ { background: isHover ? "#292a2dff" :  background , color, width, alignSelf, border } }
         onClick={addAction}
         onMouseEnter={hoverMouseEnter}
         onMouseLeave={hoverMouseLeave}
@@ -38,7 +38,7 @@ Button.propTypes = {
 }
 
 Button.defaultProps = {
-  background: "#a13854",
+  background: "transparent",
   color: "#ffffffcc",
   width: "100%",
 }
