@@ -3,11 +3,10 @@ import Title from "../../components/Title";
 import Input from "../../components/Input";
 import Button from "../../components/Button";
 import Anchor from "../../components/Anchor";
-// import Error from "../../components/Error";
+import Subtitle from "../../components/Subtitle";
+
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Subtitle from "../../components/Subtitle";
-import CardUser from "../../components/CardUser";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -21,31 +20,43 @@ const Login = () => {
   const [users] = useState([
     {
       id: 1,
+      username: "Carol",
       email: "carol@oi.com",
       password: "1234",
       isExcluded: false,
     },
     {
       id: 2,
+      username: "Maria",
       email: "user2@oi.com",
       password: "oidevs",
       isExcluded: false,
     },
     {
       id: 3,
+      username: "Betânia",
       email: "user3@oi.com",
-      password: "boradev",
+      password: "oidevs",
+      isExcluded: false,
+    },
+    {
+      id: 4,
+      username: "Gal",
+      email: "user4@oi.com",
+      password: "oidevs",
       isExcluded: false,
     },
   ]);
 
-  const goToHome = () => {
-    const findUser = users.find(
+  const goToHome = (user) => {
+    const validUser = users.find(
       (user) => user.email === emailOfUser && user.password === password
     );
 
-    if (findUser) {
-      navigate("/home", { state: { usersList: users } });
+    user.preventDefault();
+
+    if (validUser) {
+      navigate("/home", { state: { users: users } });
     } else {
       setShowError(true);
       setInputColor("red");
@@ -67,7 +78,12 @@ const Login = () => {
         <Title textTitle={title} />
         {/* <Subtitle subtitle={title} /> */}
         {/* Se showError for true ele avança na validação e retorna o componente indicado. Pois com o operador lógico && (AND) só segue o argumento se o primeiro elemento for true. */}
-        {showError && <Subtitle subtitle="Email e/ou senha inválidos." />}
+        {showError && (
+          <Subtitle
+            color="red"
+            subtitle="Os dados de acesso não são inválidos."
+          />
+        )}
 
         <Input
           label="Email"
@@ -104,14 +120,10 @@ const Login = () => {
           />
         </div>
 
-        <Anchor href="" anchor="Esqueceu a senha?" />
-        <Anchor href="" anchor="Faça seu cadastro." />
-
-        <ul>
-          {users.map((user) => (
-           <CardUser key={user.id} userContent={user.email}/>
-          ))}
-        </ul>
+        <div className="align-anchor">
+          <Anchor href="" anchor="Esqueceu a senha?" />
+          <Anchor href="" anchor="Faça seu cadastro." />
+        </div>
       </div>
     </div>
   );

@@ -2,13 +2,14 @@
 .cardUser{
     background: #484848;
     color: white;
+    font-family: Helvetica;
     border: none;
     border-radius: 8px;
     align-self: center;
-    padding: 5px 10px;
+    padding: 10px 10px;
     margin: 10px 0;
     list-style-type: none;
     display: flex;
-    align-items: center;
+    align-content: center;
     
 }
