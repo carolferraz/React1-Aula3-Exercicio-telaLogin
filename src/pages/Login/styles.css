@@ -24,7 +24,9 @@
     gap: 10px;
 }
 
-ul{
-    list-style-type: none;
-    padding: 0;
+.align-anchor{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-top: 20px;
 }

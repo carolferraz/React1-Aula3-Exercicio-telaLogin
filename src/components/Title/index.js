@@ -9,7 +9,6 @@ const Title = ( {textTitle, alignSelf, borderBottom} ) => {
 };
 
 Title.propTypes = {
-    textTitle: PropTypes.string,
     alignSelf: PropTypes.string,
 };
 

@@ -1,10 +1,10 @@
 import "./styles.css";
 
-  const CardUser = ( {background, color, border, width, alignSelf, key, userContent} ) => {
+  const CardUser = ( {background, color, border, width, alignSelf, userContent} ) => {
 
   return (
     <div>
-         <li className="cardUser" style={ {background, color, border, width, alignSelf} } key={key}>
+         <li className="cardUser" style={ {background, color, border, width, alignSelf} } >
               {userContent}
         </li>
     </div>
