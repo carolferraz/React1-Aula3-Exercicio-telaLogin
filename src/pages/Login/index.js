@@ -57,6 +57,7 @@ const Login = () => {
 
     if (validUser) {
       navigate("/home", { state: { users: users } });
+
     } else {
       setShowError(true);
       setInputColor("red");
@@ -67,6 +68,7 @@ const Login = () => {
   const changeTitle = () => {
     if (title === "Login") {
       setTitle("É só sucesso");
+
     } else {
       setTitle("Login");
     }
@@ -108,13 +110,13 @@ const Login = () => {
 
         <div className="align-btn">
           <Button
-            addAction={goToHome}
+            onClick={goToHome}
             button="Entrar"
             background="#d8a1fcaa"
             border="1px solid #d8a1fc"
           />
           <Button
-            addAction={changeTitle}
+            onClick={changeTitle}
             button="Mudar título"
             border="1px solid #e1faa3"
           />

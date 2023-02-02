@@ -6,57 +6,50 @@ import Button from "../../components/Button/index";
 import CardUser from "../../components/CardUser";
 import Subtitle from "../../components/Subtitle";
 
-
 const Home = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  
+
   const { users } = location.state;
-  const [ counter, setCounter ] = useState(0);
-  const [ usersToLocalStorage, setUsersToLocalStorage] = useState([]);
+  const [counter, setCounter] = useState(0);
+  const [usersToLocalStorage, setUsersToLocalStorage] = useState([]);
 
   const backToLogin = () => {
     navigate("/");
   };
-  
-  //armazena no localStorage
-  const saveToLocalStorage = JSON.stringify(usersToLocalStorage);
-  localStorage.setItem("users", saveToLocalStorage);
-  
-  //recupera do localStorage
-  const getFromLocalStorage = localStorage.getItem("users")
-  const userListLocalStorage = JSON.parse(getFromLocalStorage)
 
-  const add = ()=>{ 
-    if (counter < users.length - 1 ) {
-    setCounter(counter + 1) }
-    console.log("add:" + counter + userListLocalStorage + users[counter])
+  const add = () => {
+    if (!users[counter]) {
+      return;
+    }
+    setUsersToLocalStorage((prev) => [...prev, users[counter]]);
+    setCounter(counter + 1);
   };
 
-  const remove = ()=>{ 
-    if (counter < userListLocalStorage.length) {
-      setCounter(counter - 1) 
-      userListLocalStorage.pop()
-      setUsersToLocalStorage(userListLocalStorage)
-      localStorage.setItem("users", userListLocalStorage);
-    }};
-  
-    
-    useEffect(() => {
-        setUsersToLocalStorage((prev)=>[...prev, users[counter]])
+  const remove = () => {
+    //recupera do localStorage
+    const userListLocalStorage = JSON.parse(localStorage.getItem("users"));
 
-    }, [counter, users]);
-  
-    useEffect(()=> {
-      return () => {
-        console.log('desmontar')
-        localStorage.clear()
-      };
-    }, [])
+    if (counter <= 0) {
+      return
+    }
+    else {
+      setCounter(counter - 1);
+      userListLocalStorage.pop();
+      setUsersToLocalStorage(userListLocalStorage);
+    }
+  };
 
-    
-    
-    
+  useEffect(() => {
+    //armazena no localStorage
+    const saveToLocalStorage = JSON.stringify(usersToLocalStorage);
+    localStorage.setItem("users", saveToLocalStorage);
+
+    return () => {
+      localStorage.clear();
+    };
+  }, [usersToLocalStorage]);
+
   return (
     <div className="container">
       <div className="inner-container">
@@ -69,7 +62,7 @@ const Home = () => {
 
         <div className="align-btn">
           <Button
-            addAction={add}
+            onClick={add}
             button="+"
             background="#d8a1fcaa"
             border="1px solid #d8a1fc"
@@ -78,7 +71,7 @@ const Home = () => {
             alignSelf="center"
           />
           <Button
-            addAction={remove}
+            onClick={remove}
             button="-"
             background="#d8a1fcaa"
             border="1px solid #d8a1fc"
@@ -89,16 +82,15 @@ const Home = () => {
         </div>
 
         <ul>
-          {userListLocalStorage.map((user) => (
+          {usersToLocalStorage.map((user) => (
             <CardUser key={user.id} userContent={user.username} />
           ))}
         </ul>
-         
-          <Title textTitle={counter}
-          alignSelf="center" />
+
+        <Title textTitle={counter} alignSelf="center" />
 
         <Button
-          addAction={backToLogin}
+          onClick={backToLogin}
           button="Voltar"
           background="#d8a1fcaa"
           border="1px solid #d8a1fc"
